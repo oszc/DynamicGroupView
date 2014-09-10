@@ -1,0 +1,39 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            tools:context="com.zc.dynamicgroupview.app.MainActivity">
+
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:text="fdsafsadfsadf"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"/>
+
+        <com.zc.dynamicgroupview.app.choice.ScaleableRadioLayout
+                android:id="@+id/srl"
+                app:choiceMode="multiple"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+        <com.zc.dynamicgroupview.app.switcher.Switcher
+                android:id="@+id/switcher"
+                app:leftLabelText="随从"
+                app:leftLabelBackGround="@drawable/right_switch_selector"
+                app:rightLabelBackGround="@drawable/left_switch_selector"
+                app:rightLabelText="邀请人"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>

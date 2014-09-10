@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScaleableRadioLayout">
+        <attr name="choiceMode" format="enum">
+            <enum name="single" value="0"/>
+            <enum name="multiple" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="Switcher">
+        <attr name="leftLabelText" format="string"/>
+        <attr name="rightLabelText" format="string"/>
+        <attr name="leftLabelBackGround" format="reference"/>
+        <attr name="rightLabelBackGround" format="reference"/>
+        <attr name="labelColor" format="color|reference"/>
+
+    </declare-styleable>
+</resources>
