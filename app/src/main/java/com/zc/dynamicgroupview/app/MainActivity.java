@@ -5,12 +5,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.Button;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.zc.dynamicgroupview.app.choice.OnScaleableItemClick;
 import com.zc.dynamicgroupview.app.choice.ScaleableRadioLayout;
 import com.zc.dynamicgroupview.app.choice.ScaleableRadioLayoutBaseAdapter;
+import com.zc.dynamicgroupview.app.input.AMInputView;
 import com.zc.dynamicgroupview.app.switcher.Switcher;
 import com.zc.dynamicgroupview.app.switcher.SwitcherListener;
 
@@ -20,13 +22,17 @@ import java.util.List;
 /**
  * 特定用途，单选题，
  */
-public class MainActivity extends ActionBarActivity implements OnScaleableItemClick, SwitcherListener {
+public class MainActivity extends ActionBarActivity implements OnScaleableItemClick, SwitcherListener, View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     @InjectView(R.id.srl)
     ScaleableRadioLayout mSrl;
     @InjectView(R.id.switcher)
     Switcher mSwitcher;
+    @InjectView(R.id.amiv)
+    AMInputView mAmiv;
+    @InjectView(R.id.bt_add_view)
+    Button mBtAddView;
 
     private List<String> mData;
 
@@ -39,15 +45,14 @@ public class MainActivity extends ActionBarActivity implements OnScaleableItemCl
         for (int i = 0; i < 50; i++) {
             mData.add(i + "");
         }
-        //    mData = Arrays.asList("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q");
-        // mSrl.setAdapter(mAdapter);
-
-        //  TestAdapter a = new TestAdapter(this,mData);
 
         mSrl.setAdapter(mAdapter);
 
         mSrl.setOnItemClickListener(this);
         mSwitcher.setSwitchListener(this);
+
+        mAmiv.setCorrespondView(mBtAddView);
+        mBtAddView.setOnClickListener(this);
     }
 
 
@@ -91,13 +96,22 @@ public class MainActivity extends ActionBarActivity implements OnScaleableItemCl
 
     @Override
     public void onSwitch(Side side) {
-        switch (side){
+        switch (side) {
 
             case left:
-                Log.e(TAG,"switch to left");
+                Log.e(TAG, "switch to left");
                 break;
             case right:
-                Log.e(TAG,"switch to right");
+                Log.e(TAG, "switch to right");
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.bt_add_view:
+                mAmiv.addSubView();
                 break;
         }
     }

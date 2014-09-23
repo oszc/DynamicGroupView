@@ -35,5 +35,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+        <com.zc.dynamicgroupview.app.input.AMInputView
+                android:id="@+id/amiv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                android:id="@+id/bt_add_view"
+                android:layout_width="fill_parent"
+                android:text="Add View"
+                android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </ScrollView>
