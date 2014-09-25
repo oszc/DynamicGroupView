@@ -3,6 +3,7 @@ package com.zc.dynamicgroupview.app.input;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import java.util.List;
  * private 删除 (remove)
  * 获得数据(getData)
  * 去除删除功能(setRemoveable)
+ * 2.005yDBYB0JB32a00842268d80Z6CCr
  *
  * 删除的时候和添加的时候，添加动画，从上至下，不仅仅是该控件，连AddView 这个控件也需要，所以addview这个控件只能放在
  *
@@ -84,9 +86,6 @@ public class AMInputView extends LinearLayout{
 
     }
 
-
-
-
     public List<String> getResult(){
         List<String> result = new ArrayList<String>();
         if(mViews!=null && mViews.size()>0){
@@ -95,7 +94,10 @@ public class AMInputView extends LinearLayout{
                 if(view !=null) {
                     EditText et = (EditText) view.findViewById(R.id.et_input);
                     if(et !=null){
-                        result.add(et.getText().toString());
+                        String text = et.getText().toString();
+                       if(!TextUtils.isEmpty(text)){
+                           result.add(text);
+                       }
                     }
                 }
             }
@@ -176,8 +178,7 @@ public class AMInputView extends LinearLayout{
                 @Override
                 public void onAnimationEnd(Animation animation) {
 
-                    mViews.remove(view);
-                    AMInputView.super.removeView(view);
+                    view.setVisibility(View.INVISIBLE);
                     for(int i = indexOfDeleteView+1; i < mViews.size(); i++){
                         mViews.get(i).startAnimation(animationTranslate);
                     }
@@ -187,6 +188,25 @@ public class AMInputView extends LinearLayout{
                     }
 
 
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+
+            animationTranslate.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    mViews.remove(view);
+                    AMInputView.super.removeView(view);
                 }
 
                 @Override

@@ -46,5 +46,11 @@
                 android:text="Add View"
                 android:layout_height="wrap_content"/>
 
+        <Button
+                android:id="@+id/bt_get_result"
+                android:layout_width="fill_parent"
+                android:text="Get Result"
+                android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </ScrollView>

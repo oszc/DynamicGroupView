@@ -33,6 +33,8 @@ public class MainActivity extends ActionBarActivity implements OnScaleableItemCl
     AMInputView mAmiv;
     @InjectView(R.id.bt_add_view)
     Button mBtAddView;
+    @InjectView(R.id.bt_get_result)
+    Button mBtGetResult;
 
     private List<String> mData;
 
@@ -53,6 +55,7 @@ public class MainActivity extends ActionBarActivity implements OnScaleableItemCl
 
         mAmiv.setCorrespondView(mBtAddView);
         mBtAddView.setOnClickListener(this);
+        mBtGetResult.setOnClickListener(this);
     }
 
 
@@ -109,9 +112,12 @@ public class MainActivity extends ActionBarActivity implements OnScaleableItemCl
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.bt_add_view:
                 mAmiv.addSubView();
+                break;
+            case R.id.bt_get_result:
+                Log.e(TAG,mAmiv.getResult()+"");
                 break;
         }
     }
